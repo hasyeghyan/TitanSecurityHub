@@ -7,14 +7,14 @@
 #include "Alarm.hpp"
 
 class Sensor {
-    private: 
+    protected: 
         std::string name;
         std::string location;
         int data;
 
         std::string currentMode;
     public:
-        Sensor(const std::string& n, const std::string& l, int d) : name{n}, location{l}, data{d} {}
+        Sensor(const std::string& n, const std::string& l, int d, const std::string& c) : name{n}, location{l}, data{d}, currentMode{c} {}
         virtual ~Sensor() {}
 
         const std::string& getName() const noexcept { return name; }
@@ -22,7 +22,7 @@ class Sensor {
 
         void getInfo(); 
 
-        virtual void pollSensor(const Alarm& a, const std::string& currentMode) = 0;
+        virtual void pollSensor(const Alarm& a) = 0;
         
         void simulateSensorInput(int value) { data = value; }
 };

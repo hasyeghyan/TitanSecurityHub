@@ -7,12 +7,12 @@
 
 int main() {
     try {
-        std::shared_ptr<Sensor> doorSensor= std::make_shared<DoorSensor>("Door Sensor", "Entry", 0);
-        std::shared_ptr<Sensor> heatSensor= std::make_shared<HeatSensor>("Heat Sensor", "Kitchen", 25);
-        std::shared_ptr<Sensor> motionSensor= std::make_shared<MotionSensor>("Motion Sensor", "Living Room", 0);
+        std::shared_ptr<Sensor> doorSensor= std::make_shared<DoorSensor>("Door Sensor", "Entry", 0, "Day");
+        std::shared_ptr<Sensor> heatSensor= std::make_shared<HeatSensor>("Heat Sensor", "Kitchen", 25, "Night");
+        std::shared_ptr<Sensor> motionSensor= std::make_shared<MotionSensor>("Motion Sensor", "Living Room", 0, "Away");
 
 
-        TitanSystem homeSecurity;
+        TitanSystem& homeSecurity = TitanSystem::get_instance();
         homeSecurity.addSensor(doorSensor);
         homeSecurity.addSensor(heatSensor);
         homeSecurity.addSensor(motionSensor);

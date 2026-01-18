@@ -1,6 +1,6 @@
 #include "HeatSensor.hpp"
 
-void HeatSensor::pollSensor(const Alarm& a, const std::string& currentMode) {
+void HeatSensor::pollSensor(const Alarm& a) {
     std::cout << "Reading " << getName() << "... Temp: " << getData() << "C. ";
     
     if (getData() > 50) {

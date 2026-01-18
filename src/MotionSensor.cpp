@@ -1,6 +1,6 @@
 #include "MotionSensor.hpp"
 
-void MotionSensor::pollSensor(const Alarm& a, const std::string& currentMode) {
+void MotionSensor::pollSensor(const Alarm& a) {
     std::cout << "Reading " << getName() << "... ";
     
     if (getData() == 1 && currentMode == "Away") {

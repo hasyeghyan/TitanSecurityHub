@@ -5,10 +5,10 @@
 
 class DoorSensor : public Sensor {
     public:
-        DoorSensor(const std::string& n, const std::string& l, int d) : Sensor(n,l,d) {}
+        DoorSensor(const std::string& n, const std::string& l, int d, const std::string& c) : Sensor(n,l,d,c) {}
         ~DoorSensor() = default;
     
-        virtual void pollSensor(const Alarm& a, const std::string& currentMode) override;
+        virtual void pollSensor(const Alarm& a) override;
 };
 
 

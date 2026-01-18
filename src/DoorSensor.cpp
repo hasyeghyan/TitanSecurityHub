@@ -1,9 +1,9 @@
 #include "DoorSensor.hpp"
 
-void DoorSensor::pollSensor(const Alarm& a, const std::string& currentMode) {
+void DoorSensor::pollSensor(const Alarm& a) {
     std::cout << "Reading " << getName() << "... ";
     
-    if (getData() == 1) {
+    if (getData()) {
         std::cout << "OPEN! Triggering Alarm!" << std::endl;
         a.triggerAlarm("High", "Police");
     } else {

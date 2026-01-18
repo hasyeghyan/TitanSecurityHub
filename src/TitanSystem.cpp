@@ -5,6 +5,11 @@ TitanSystem::TitanSystem() {
     currentMode = "Day";
 }
 
+TitanSystem& TitanSystem::get_instance() {
+    static TitanSystem ts;
+    return ts;
+}
+
 void TitanSystem::removeSensor(const std::string& n) {
     for (size_t i{}; i < sensors.size(); ++i) {
         if (sensors[i]->getName() == n) {
@@ -18,7 +23,7 @@ void TitanSystem::removeSensor(const std::string& n) {
     if (mode == "Day" || mode == "Night" || mode == "Away") {
         currentMode = mode;
         std::cout << "[System] Mode set to: " << mode << std::endl;
-        if (mode == "Night" || mode == "Away") {
+        if (mode == "Away") {
             systemArmed = true;
         }
     } else {
@@ -29,7 +34,7 @@ void TitanSystem::removeSensor(const std::string& n) {
 void TitanSystem::pollSensors(const Alarm& a) {
     if (systemArmed) {
         for (size_t i{}; i < sensors.size(); ++i) {
-            sensors[i]->pollSensor(a, currentMode);
+            sensors[i]->pollSensor(a);
         }
     }
 }
